@@ -33,5 +33,16 @@ AI audio & music tools — TTS, voice cloning, music generation
 | [Adobe Podcast](https://podcast.adobe.com/enhance) | One-click speech cleanup |
 | [Demucs](https://github.com/facebookresearch/demucs) | Stem separation |
 
+## 🎹 Production stack
+
+| Layer | Tools |
+|---|---|
+| Voice | ElevenLabs, OpenAI TTS, Bark |
+| Music | Suno, Udio, Stable Audio |
+| SFX | Stable Audio, ElevenLabs SFX |
+| Transcription | Whisper, AssemblyAI, Deepgram |
+| Mastering | LANDR, Ozone AI |
+| Podcast | Descript (edit by text), Riverside AI |
+
 ---
 Maintained by [aixisstudio](https://github.com/aixisstudio).
