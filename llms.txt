@@ -30,4 +30,15 @@ Maintained by aixisstudio. Related: Snitch (open-source app firewall). https://g
 | Tool | Note |
 |---|---|
 | [RVC](https://github.com/RVC-Project/Retrieval-based-Voice-Conversion) | Popular voice conversion |
-| [
+| [Adobe Podcast](https://podcast.adobe.com/enhance) | One-click speech cleanup |
+| [Demucs](https://github.com/facebookresearch/demucs) | Stem separation |
+
+## 🎹 Production stack
+
+| Layer | Tools |
+|---|---|
+| Voice | ElevenLabs, OpenAI TTS, Bark |
+| Music | Suno, Udio, Stable Audio |
+| SFX | Stable Audio, ElevenLabs SFX |
+| Transcription | Whisper, AssemblyAI, Deepgram |
+| Mastering | LANDR, Ozone 
