@@ -37,6 +37,17 @@ _详细内容（列表、链接、描述）以英文维护 — 以下章节为�
 | [Adobe Podcast](https://podcast.adobe.com/enhance) | One-click speech cleanup |
 | [Demucs](https://github.com/facebookresearch/demucs) | Stem separation |
 
+## 🎹 Production stack
+
+| Layer | Tools |
+|---|---|
+| Voice | ElevenLabs, OpenAI TTS, Bark |
+| Music | Suno, Udio, Stable Audio |
+| SFX | Stable Audio, ElevenLabs SFX |
+| Transcription | Whisper, AssemblyAI, Deepgram |
+| Mastering | LANDR, Ozone AI |
+| Podcast | Descript (edit by text), Riverside AI |
+
 ---
 ## 贡献
 
