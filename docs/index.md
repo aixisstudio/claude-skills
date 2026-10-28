@@ -1,48 +1,69 @@
 ---
 ---
-AI audio & music tools — TTS, voice cloning, music generation
+Agent Skills for Claude — SKILL.md files that teach AI agents real abilities
 
-## 🗣️ Voice & TTS
-| Tool | Note |
+## 🧩 What are Agent Skills?
+
+**Skills are folders with a `SKILL.md` file** that teach an AI agent how to do a specific task — loadable context, not code. Anthropic's format: a YAML front matter (`name`, `description`) plus instructions, scripts, and resources the agent reads on demand.
+
+This repo is a curated collection of ready-to-use skills + a guide to writing your own.
+
+## 📚 Skill categories
+
+### 📄 Document skills
+| Skill | What it does |
 |---|---|
-| [ElevenLabs](https://elevenlabs.io/) | The reference — TTS, cloning, dubbing |
-| [OpenAI TTS](https://platform.openai.com/docs) | Solid API voices |
-| [XTTS / Coqui](https://github.com/coqui-ai/TTS) | OSS cloning engine |
-| [Bark](https://github.com/suno-ai/bark) | OSS generative audio (speech+fx) |
+| `docx` | Create/edit Word documents with tracked changes |
+| `pdf` | Extract, split, merge, fill PDF forms |
+| `pptx` | Build slide decks from outlines |
+| `xlsx` | Spreadsheets with formulas, charts, pivots |
 
-## 📝 Speech→Text
-| Tool | Note |
+### 🛠️ Dev skills
+| Skill | What it does |
 |---|---|
-| [Whisper](https://github.com/openai/whisper) | The OSS standard — local & free |
-| [faster-whisper](https://github.com/SYSTRAN/faster-whisper) | CTranslate2 speedup |
-| [whisper.cpp](https://github.com/ggerganov/whisper.cpp) | Whisper on anything |
+| `webapp-testing` | Drive a browser, verify UI states |
+| `mcp-builder` | Scaffold new MCP servers |
+| `skill-creator` | Meta-skill: write new skills |
+| `git-commit-helper` | Conventional commits, PR descriptions |
 
-## 🎵 Music
-| Tool | Note |
+### 🎨 Creative skills
+| Skill | What it does |
 |---|---|
-| [Suno](https://suno.com/) | Full songs with vocals |
-| [Udio](https://udio.com/) | Competition-grade alternative |
-| [Stable Audio](https://stability.ai/) | Stability's audio model |
-| [MusicGen](https://github.com/facebookresearch/audiocraft) | Meta's open music model |
-| [Riffusion](https://github.com/riffusion/riffusion) | Spectrogram-diffusion origin |
+| `canvas-design` | Visual design specs → assets |
+| `video-script` | Storyboard + script formatting |
+| `brand-voice` | Enforce a style guide on drafts |
 
-## 🔊 Voice conversion & FX
-| Tool | Note |
-|---|---|
-| [RVC](https://github.com/RVC-Project/Retrieval-based-Voice-Conversion) | Popular voice conversion |
-| [Adobe Podcast](https://podcast.adobe.com/enhance) | One-click speech cleanup |
-| [Demucs](https://github.com/facebookresearch/demucs) | Stem separation |
+## 🧪 Anatomy of a SKILL.md
 
-## 🎹 Production stack
+```markdown
+---
+name: pdf-form-filler
+description: Fill PDF form fields. Use when the user provides a PDF with empty form fields.
+---
 
-| Layer | Tools |
-|---|---|
-| Voice | ElevenLabs, OpenAI TTS, Bark |
-| Music | Suno, Udio, Stable Audio |
-| SFX | Stable Audio, ElevenLabs SFX |
-| Transcription | Whisper, AssemblyAI, Deepgram |
-| Mastering | LANDR, Ozone AI |
-| Podcast | Descript (edit by text), Riverside AI |
+# PDF Form Filler
+
+## Instructions
+1. Run `scripts/extract_fields.py form.pdf` to list fields
+2. Ask the user for values of any ambiguous field
+3. Fill with `scripts/fill_fields.py`
+
+## Resources
+- `scripts/` — helper scripts (deterministic, no LLM needed)
+- `reference/field-types.md` — PDF field type reference
+```
+
+**Rules of thumb:**
+- Description = trigger — it decides when the agent loads the skill
+- Deterministic work goes in **scripts**, judgment work stays in instructions
+- Keep SKILL.md < 500 lines; split reference material into files
+- Skills compose: one skill can reference another
+
+## 🚀 Using these skills
+
+- **Claude.ai / Claude Code**: drop the folder in `.claude/skills/`
+- **API**: attach via the skills mechanism / include in context
+- **Other agents**: the format ports trivially — it's just markdown + files
 
 ---
 Maintained by [aixisstudio](https://github.com/aixisstudio).
