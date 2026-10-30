@@ -1,73 +1,50 @@
-# Claude Skills
+# Ai Audio Tools
 
 [English](README.md) | [Français](README.fr.md) | [Español](README.es.md) | [中文](README.zh-CN.md) | **日本語** | [Русский](README.ru.md)
 
-Claude スキル集 — SKILL.md
+AI 音声・音楽ツール
 
-_詳細なコンテンツ（リスト・リンク・説明）は保守のため英語です。以下のセクションがガイドになります。_
-
-## 🧩 What are Agent Skills?
-
-**Skills are folders with a `SKILL.md` file** that teach an AI agent how to do a specific task — loadable context, not code. Anthropic's format: a YAML front matter (`name`, `description`) plus instructions, scripts, and resources the agent reads on demand.
-
-This repo is a curated collection of ready-to-use skills + a guide to writing your own.
-
-## 📚 Skill categories
-
-### 📄 Document skills
-| Skill | What it does |
+## は、ボイス&TTS
+| ツール | ノート |
 |---|---|
-| `docx` | Create/edit Word documents with tracked changes |
-| `pdf` | Extract, split, merge, fill PDF forms |
-| `pptx` | Build slide decks from outlines |
-| `xlsx` | Spreadsheets with formulas, charts, pivots |
+| 【ElevenLabs】(https://elevenlabs.io/) | 参考 — TTS, cloning, dubbing |
+| 【OpenAI TTS】(https://platform.openai.com/docs) | ソリッドAPIボイス |
+| 【XTTS / Coqui】(https://github.com/coqui-ai/TTS) | OSSクローニングエンジン |
+| [Bark](https://github.com/suno-ai/bark) | OSSの総合音声(speech+fx) |
 
-### 🛠️ Dev skills
-| Skill | What it does |
+## スピーチ→テキスト
+| ツール | ノート |
 |---|---|
-| `webapp-testing` | Drive a browser, verify UI states |
-| `mcp-builder` | Scaffold new MCP servers |
-| `skill-creator` | Meta-skill: write new skills |
-| `git-commit-helper` | Conventional commits, PR descriptions |
+| 【ハイパー】(https://github.com/openai/whisper) | OSS規格 — ローカル・フリー |
+| 【高速ホワイスパー】(https://github.com/SYSTRAN/faster-whisper) | CTranslate2 スピードアップ |
+| 【whisper.cpp】(https://github.com/ggerganov/whisper.cpp) | ウィスパー 何でも |
 
-### 🎨 Creative skills
-| Skill | What it does |
+## リリース
+| ツール | ノート |
 |---|---|
-| `canvas-design` | Visual design specs → assets |
-| `video-script` | Storyboard + script formatting |
-| `brand-voice` | Enforce a style guide on drafts |
+| 【サンオ】(https://suno.com/) | ボーカルでフルソング |
+| 【Udio】(https://udio.com/) | コンペティショングレード別 |
+| 【Stable Audio】(https://stability.ai/) | 安定性のオーディオモデル |
+| 【MusicGen】(https://github.com/facebookresearch/audiocraft) | メタのオープンミュージックモデル |
+| 【リフュージョン】(https://github.com/riffusion/riffusion) | スペクトグラム・拡散の由来 |
 
-## 🧪 Anatomy of a SKILL.md
+## 音声変換&FX
+| ツール | ノート |
+|---|---|
+| 【RVC】(https://github.com/RVC-Project/Retrieval-based-Voice-Conversion) | 人気の声変換 |
+| 【Adobe Podcast】(https://podcast.adobe.com/enhance) | ワンクリックで音声をクリーンアップ |
+| 【デミュcs】(https://github.com/facebookresearch/demucs) | ステム分離 |
 
-```markdown
----
-name: pdf-form-filler
-description: Fill PDF form fields. Use when the user provides a PDF with empty form fields.
----
+## スタッフ
 
-# PDF Form Filler
-
-## Instructions
-1. Run `scripts/extract_fields.py form.pdf` to list fields
-2. Ask the user for values of any ambiguous field
-3. Fill with `scripts/fill_fields.py`
-
-## Resources
-- `scripts/` — helper scripts (deterministic, no LLM needed)
-- `reference/field-types.md` — PDF field type reference
-```
-
-**Rules of thumb:**
-- Description = trigger — it decides when the agent loads the skill
-- Deterministic work goes in **scripts**, judgment work stays in instructions
-- Keep SKILL.md < 500 lines; split reference material into files
-- Skills compose: one skill can reference another
-
-## 🚀 Using these skills
-
-- **Claude.ai / Claude Code**: drop the folder in `.claude/skills/`
-- **API**: attach via the skills mechanism / include in context
-- **Other agents**: the format ports trivially — it's just markdown + files
+| レイヤー | ツール |
+|---|---|
+| 音声 | イーブンラボ、OpenAI TTS、バーク |
+| ミュージック | 日野・上尾・安定音声 |
+| SFX | 安定音声・イレブンLabs SFX |
+| トランスクリプション | ウィスパー、アッセンブリ、ディープグラム |
+| マスター | LANDR・オゾン AI |
+| Podcast | 原稿(テキスト)、リバーサイドAI |
 
 ---
 ## 貢献
