@@ -1,73 +1,50 @@
-# Claude Skills
+# Ai Audio Tools
 
 [English](README.md) | [Français](README.fr.md) | **Español** | [中文](README.zh-CN.md) | [日本語](README.ja.md) | [Русский](README.ru.md)
 
-Skills de agente para Claude
+Herramientas de audio y música con IA
 
-_El contenido detallado (listas, enlaces, descripciones) está en inglés por mantenibilidad — las secciones siguientes te guían._
-
-## 🧩 What are Agent Skills?
-
-**Skills are folders with a `SKILL.md` file** that teach an AI agent how to do a specific task — loadable context, not code. Anthropic's format: a YAML front matter (`name`, `description`) plus instructions, scripts, and resources the agent reads on demand.
-
-This repo is a curated collection of ready-to-use skills + a guide to writing your own.
-
-## 📚 Skill categories
-
-### 📄 Document skills
-| Skill | What it does |
+Voz de voz
+← Herramienta Silenciosa
 |---|---|
-| `docx` | Create/edit Word documents with tracked changes |
-| `pdf` | Extract, split, merge, fill PDF forms |
-| `pptx` | Build slide decks from outlines |
-| `xlsx` | Spreadsheets with formulas, charts, pivots |
+[ElevenLabs] (https://elevenlabs.io/) La referencia — TTS, clonación, doblado
+Silencio [OpenAI TTS] (https://platform.openai.com/docs)
+[XTTS / Coqui] (https://github.com/coqui-ai/TTS)
+[Bark] (https://github.com/suno-ai/bark) Silencio OSS audio generativo (speech+fx)
 
-### 🛠️ Dev skills
-| Skill | What it does |
+## 📝 Speech→Text
+← Herramienta Silenciosa
 |---|---|
-| `webapp-testing` | Drive a browser, verify UI states |
-| `mcp-builder` | Scaffold new MCP servers |
-| `skill-creator` | Meta-skill: write new skills |
-| `git-commit-helper` | Conventional commits, PR descriptions |
+Silencio [Whisper] (https://github.com/openai/whisper)
+(https://github.com/SYSTRAN/faster-whisper)
+[whisper.cpp] (https://github.com/ggerganov/whisper.cpp)
 
-### 🎨 Creative skills
-| Skill | What it does |
+Música
+← Herramienta Silenciosa
 |---|---|
-| `canvas-design` | Visual design specs → assets |
-| `video-script` | Storyboard + script formatting |
-| `brand-voice` | Enforce a style guide on drafts |
+Silencio [Suno] (https://suno.com/) Silencio Canciones completas con vocales
+Silencio [Udio] (https://udio.com/)
+Silencio [Stable Audio] (https://stability.ai/)
+Silencio [MusicGen] (https://github.com/facebookresearch/audiocraft)
+[Riffusion] (https://github.com/riffusion/riffusion)
 
-## 🧪 Anatomy of a SKILL.md
+## 🔊 Conversión de voz &gt; FX
+← Herramienta Silenciosa
+|---|---|
+Silencio [RVC] (https://github.com/RVC-Project/Retrieval-based-Voice-Conversion)
+Silencio [Adobe Podcast] (https://podcast.adobe.com/enhance)
+[Demucs] (https://github.com/facebookresearch/demucs)
 
-```markdown
----
-name: pdf-form-filler
-description: Fill PDF form fields. Use when the user provides a PDF with empty form fields.
----
+## 🎹 Apilado de producción
 
-# PDF Form Filler
-
-## Instructions
-1. Run `scripts/extract_fields.py form.pdf` to list fields
-2. Ask the user for values of any ambiguous field
-3. Fill with `scripts/fill_fields.py`
-
-## Resources
-- `scripts/` — helper scripts (deterministic, no LLM needed)
-- `reference/field-types.md` — PDF field type reference
-```
-
-**Rules of thumb:**
-- Description = trigger — it decides when the agent loads the skill
-- Deterministic work goes in **scripts**, judgment work stays in instructions
-- Keep SKILL.md < 500 lines; split reference material into files
-- Skills compose: one skill can reference another
-
-## 🚀 Using these skills
-
-- **Claude.ai / Claude Code**: drop the folder in `.claude/skills/`
-- **API**: attach via the skills mechanism / include in context
-- **Other agents**: the format ports trivially — it's just markdown + files
+← Layer Silencioso Herramientas Silencio
+|---|---|
+← Voz Silencioso ElevenLabs, OpenAI TTS, Bark
+← Música en Suno, Udio, Stable Audio
+SFX ← Stable Audio, ElevenLabs SFX
+Silencioso transcripción Silencioso, AssemblyAI, Deepgram
+TENIENDO TERRITORIO EN LA LANDR, Ozone AI
+Podcast Silencioso Descripto (editado por texto), Riverside AI
 
 ---
 ## Contribuir
