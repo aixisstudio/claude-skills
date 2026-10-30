@@ -1,50 +1,71 @@
-# Ai Audio Tools
+# Claude Skills
 
 [English](README.md) | **Français** | [Español](README.es.md) | [中文](README.zh-CN.md) | [日本語](README.ja.md) | [Русский](README.ru.md)
 
-Outils audio & musique IA — TTS, clonage vocal, génération musicale
+Agent Skills pour Claude — des SKILL.md qui enseignent de vraies compétences
 
-La voix et le TTS
-Remarque
+Qu'est-ce que les compétences des agents ?
+
+**Les compétences sont des dossiers avec un fichier `SKILL.md`** qui enseignent à un agent d'IA comment effectuer une tâche spécifique — contexte chargeable, pas code. Format de l'anthropique : une matière avant YAML (`name`, `description`) plus instructions, scripts et ressources que l'agent lit sur demande.
+
+Cette repo est une collection curated de compétences prêtes à l'emploi + un guide pour écrire votre propre.
+
+Catégories de compétences
+
+Compétences documentaires
+Compétence Ce qu'il fait
 |---|---|
-[ElevenLabs] (https://elevenlabs.io/) La référence — TTS, clonage, doublage
-[OpenAI TTS] (https://platform.openai.com/docs)
-[XTTS / Coqui] (https://github.com/coqui-ai/TTS)
-[Bark] (https://github.com/suno-ai/bark) (en anglais seulement)
+Créer/éditer Documents Word avec changements suivis
+`pdf`?Extrait, partage, fusion, remplir les formulaires PDF?
+Construisez des ponts coulissants à partir de contours
+`xlsx`=Feuilles de calcul avec formules, graphiques, pivots=
 
-Texte
-Remarque
+Compétences du Dev
+Compétence Ce qu'il fait
 |---|---|
-Le standard OSS — local et gratuit
-(https://github.com/SYSTRAN/faster-whisper)
-[whisper.cpp] (https://github.com/ggerganov/whisper.cpp)
+Conduire un navigateur, vérifier les états de l'interface utilisateur
+`mcp-builder`
+`skill-creator`: Meta-skill: écrire de nouvelles compétences
+`git-commit-helper`: commits conventionnels, descriptions PR
 
-Musique
-Remarque
+Compétences créatives
+Compétence Ce qu'il fait
 |---|---|
-[Suno](https://suno.com/)= Chansons complètes avec voix
-[Udio] (https://udio.com/)
-Le modèle audio de stabilité
-[MusicGen] (https://github.com/facebookresearch/audiocraft)
-[Riffusion](https://github.com/riffusion/riffusion)
+`canvas-design`=Spécifications visuelles → actifs
+`video-script`
+`brand-voice`: Appliquer un guide de style sur les projets
 
-Conversion vocale et FX
-Remarque
-|---|---|
-La conversion vocale populaire
-[Adobe Podcast] (https://podcast.adobe.com/enhance)
-[Demucs] (https://github.com/facebookresearch/demucs)
+Anatomie d'un SKILL.md
 
-Pile de production
+```markdown
+---
+name: pdf-form-filler
+description: Fill PDF form fields. Use when the user provides a PDF with empty form fields.
+---
 
-Outils
-|---|---|
-OnzeLabs, OpenAI TTS, Bark
-Musique de Suno, Udio, Audio stable
-SFX=Stable Audio, OnzeLabs SFX=
-Transcription : Whisper, AssemblyAI, Deepgram
-Maîtrise de l'ozone
-Description (modifier par texte), Riverside AI
+# PDF Form Filler
+
+## Instructions
+1. Run `scripts/extract_fields.py form.pdf` to list fields
+2. Ask the user for values of any ambiguous field
+3. Fill with `scripts/fill_fields.py`
+
+## Resources
+- `scripts/` — helper scripts (deterministic, no LLM needed)
+- `reference/field-types.md` — PDF field type reference
+```
+
+**Règles du pouce:**
+- Description = déclencheur — il décide quand l'agent charge l'habileté
+- Le travail déterministe va dans **scripts**, le travail de jugement reste dans les instructions
+- Conserver SKILL.md < 500 lignes; diviser le matériel de référence en fichiers
+- Les compétences composent : une compétence peut en faire une autre
+
+Utilisation de ces compétences
+
+- **Claude.ai / Claude Code** : déposez le dossier dans `.claude/skills/`
+- **API**: attacher via le mécanisme des compétences / inclure dans le contexte
+- **Autres agents**: les ports format trivially — c'est juste balisage + fichiers
 
 ---
 ## Contribuer
