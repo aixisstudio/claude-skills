@@ -1,73 +1,50 @@
-# Claude Skills
+# Ai Audio Tools
 
 [English](README.md) | [Français](README.fr.md) | [Español](README.es.md) | [中文](README.zh-CN.md) | [日本語](README.ja.md) | **Русский**
 
-Скиллы для Claude — SKILL.md
+ИИ-инструменты аудио и музыки
 
-_Подробное содержимое (списки, ссылки, описания) ведётся на английском — разделы ниже помогут сориентироваться._
-
-## 🧩 What are Agent Skills?
-
-**Skills are folders with a `SKILL.md` file** that teach an AI agent how to do a specific task — loadable context, not code. Anthropic's format: a YAML front matter (`name`, `description`) plus instructions, scripts, and resources the agent reads on demand.
-
-This repo is a curated collection of ready-to-use skills + a guide to writing your own.
-
-## 📚 Skill categories
-
-### 📄 Document skills
-| Skill | What it does |
+##  ️ Голос и TTS
+| Инструмент | Примечание
 |---|---|
-| `docx` | Create/edit Word documents with tracked changes |
-| `pdf` | Extract, split, merge, fill PDF forms |
-| `pptx` | Build slide decks from outlines |
-| `xlsx` | Spreadsheets with formulas, charts, pivots |
+[ElevenLabs] (https://elevenlabs.io/) Ссылка — ТТС, клонирование, дублирование |
+[OpenAI TTS] (https://platform.openai.com/docs) | Твердые голоса API
+[XTTS / Coqui] (https://github.com/coqui-ai/TTS) | Двигатель клонирования OSS
+| [Bark](https://github.com/suno-ai/bark) | OSS генеративное аудио (речь + fx) |
 
-### 🛠️ Dev skills
-| Skill | What it does |
+##   Речь→Текст
+| Инструмент | Примечание
 |---|---|
-| `webapp-testing` | Drive a browser, verify UI states |
-| `mcp-builder` | Scaffold new MCP servers |
-| `skill-creator` | Meta-skill: write new skills |
-| `git-commit-helper` | Conventional commits, PR descriptions |
+| [Шепот] (https://github.com/openai/whisper) | Стандарт OSS — локальный и бесплатный |
+[быстрый шепот] (https://github.com/SYSTRAN/faster-whisper) | CTranslate2 speedup |
+[whisper.cpp] [https://github.com/ggerganov/whisper.cpp] [Whisper on Anything] [Whisper on Anything]
 
-### 🎨 Creative skills
-| Skill | What it does |
+## Музыка
+| Инструмент | Примечание
 |---|---|
-| `canvas-design` | Visual design specs → assets |
-| `video-script` | Storyboard + script formatting |
-| `brand-voice` | Enforce a style guide on drafts |
+| [Suno](https://suno.com/) | Полные песни с вокалом |
+| [Udio](https://udio.com/) | Альтернатива конкурентного класса |
+[Стабильное аудио] (https://stability.ai/) | Аудиомодель Стабильности
+[MusicGen] (https://github.com/facebookresearch/audiocraft) | Открытая музыкальная модель Meta
+[Riffusion] (https://github.com/riffusion/riffusion) | Происхождение спектрограмм-диффузии
 
-## 🧪 Anatomy of a SKILL.md
+##   Голосовое преобразование и FX
+| Инструмент | Примечание
+|---|---|
+[RVC] (https://github.com/RVC-Project/Retrieval-based-Voice-Conversion) | Популярное преобразование голоса
+[Adobe Podcast] (https://podcast.adobe.com/enhance) | Очистка речи одним щелчком мыши
+[Demucs] (https://github.com/facebookresearch/demucs) | Разделение стеблей
 
-```markdown
----
-name: pdf-form-filler
-description: Fill PDF form fields. Use when the user provides a PDF with empty form fields.
----
+###Производственный стек
 
-# PDF Form Filler
-
-## Instructions
-1. Run `scripts/extract_fields.py form.pdf` to list fields
-2. Ask the user for values of any ambiguous field
-3. Fill with `scripts/fill_fields.py`
-
-## Resources
-- `scripts/` — helper scripts (deterministic, no LLM needed)
-- `reference/field-types.md` — PDF field type reference
-```
-
-**Rules of thumb:**
-- Description = trigger — it decides when the agent loads the skill
-- Deterministic work goes in **scripts**, judgment work stays in instructions
-- Keep SKILL.md < 500 lines; split reference material into files
-- Skills compose: one skill can reference another
-
-## 🚀 Using these skills
-
-- **Claude.ai / Claude Code**: drop the folder in `.claude/skills/`
-- **API**: attach via the skills mechanism / include in context
-- **Other agents**: the format ports trivially — it's just markdown + files
+Слой, инструменты.
+|---|---|
+ElevenLabs, OpenAI TTS, Bark
+Музыка, Udio, Stable Audio
+Стабильное аудио, ElevenLabs SFX
+| Транскрипция | Шепот, AssemblyAI, Deepgram |
+Оригинальное название: LANDR, Ozone AI
+| Podcast | Descript (редактировано по тексту), Riverside AI |
 
 ---
 ## Участие
