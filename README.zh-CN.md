@@ -1,73 +1,50 @@
-# Claude Skills
+# Ai Audio Tools
 
 [English](README.md) | [Français](README.fr.md) | [Español](README.es.md) | **中文** | [日本語](README.ja.md) | [Русский](README.ru.md)
 
-Claude 技能集 — SKILL.md 文件
+AI 音频与音乐工具
 
-_详细内容（列表、链接、描述）以英文维护 — 以下章节为你指引。_
-
-## 🧩 What are Agent Skills?
-
-**Skills are folders with a `SKILL.md` file** that teach an AI agent how to do a specific task — loadable context, not code. Anthropic's format: a YAML front matter (`name`, `description`) plus instructions, scripts, and resources the agent reads on demand.
-
-This repo is a curated collection of ready-to-use skills + a guide to writing your own.
-
-## 📚 Skill categories
-
-### 📄 Document skills
-| Skill | What it does |
+# # # 语音 & TTS #
+* * * 工具 * * 注 * *
 |---|---|
-| `docx` | Create/edit Word documents with tracked changes |
-| `pdf` | Extract, split, merge, fill PDF forms |
-| `pptx` | Build slide decks from outlines |
-| `xlsx` | Spreadsheets with formulas, charts, pivots |
+[ElevenLabs] (https://elevenlabs.io/) | | 参考文献——TTS,克隆,编剧  腾讯网.
+[OpenAI TTS] (https://platform.openai.com/docs) [https://platform.openai.com/docs] 固态API声音 |
+[XTTS / Coqui](https://github.com/coqui-ai/TTS) OSS克隆引擎
+[暗 [https://github.com/suno-ai/bark] OSS 基因音频(speech+fx) |
 
-### 🛠️ Dev skills
-| Skill | What it does |
+□ □ □ 发言□ 文本
+* * * 工具 * * 注 * *
 |---|---|
-| `webapp-testing` | Drive a browser, verify UI states |
-| `mcp-builder` | Scaffold new MCP servers |
-| `skill-creator` | Meta-skill: write new skills |
-| `git-commit-helper` | Conventional commits, PR descriptions |
+[Whistory](https://github.com/openai/whisper) OSS标准——本地和免费 QQ.
+[快-低音] (https://github.com/SYSTRAN/faster-whisper) | Ctranslate2 速度|.
+[whisper.cpp] (https://github.com/ggerganov/whisper.cpp) 任何事物的Whisper
 
-### 🎨 Creative skills
-| Skill | What it does |
+□ □ 音乐
+* * * 工具 * * 注 * *
 |---|---|
-| `canvas-design` | Visual design specs → assets |
-| `video-script` | Storyboard + script formatting |
-| `brand-voice` | Enforce a style guide on drafts |
+[Suno](https://suno.com/) | | | | | | | | | | | | | | | | | | | | | |
+[Udio](https://udio.com/) 竞争级别替代方法
+[稳定音频](https://stability.ai/) 稳定音频模式 QQ
+[MusicGen](https://github.com/facebookresearch/audiocraft)[永久失效連結] 梅塔公开音乐模式 腾讯网.
+[Rifmusion](https://github.com/riffusion/riffusion) | Spectrogram-diflusation起源 |.
 
-## 🧪 Anatomy of a SKILL.md
+# # # # 语音转换 & FX
+* * * 工具 * * 注 * *
+|---|---|
+[RVC](https://github.com/RVC-Project/Retrieval-based-Voice-Conversion) 大众语音转换 腾讯网.
+[Adobe Podcast] (https://podcast.adobe.com/enhance) – 单击清话 – |
+[Demucs](https://github.com/facebookresearch/demucs) |  Ste  Ste  Ste  Ste  Ste  Ste  Ste  Ste  Ste  Ste  Ste | | | | | | | | | | | | | | | | | | | | | | | | |
 
-```markdown
----
-name: pdf-form-filler
-description: Fill PDF form fields. Use when the user provides a PDF with empty form fields.
----
+□ 生产堆栈
 
-# PDF Form Filler
-
-## Instructions
-1. Run `scripts/extract_fields.py form.pdf` to list fields
-2. Ask the user for values of any ambiguous field
-3. Fill with `scripts/fill_fields.py`
-
-## Resources
-- `scripts/` — helper scripts (deterministic, no LLM needed)
-- `reference/field-types.md` — PDF field type reference
-```
-
-**Rules of thumb:**
-- Description = trigger — it decides when the agent loads the skill
-- Deterministic work goes in **scripts**, judgment work stays in instructions
-- Keep SKILL.md < 500 lines; split reference material into files
-- Skills compose: one skill can reference another
-
-## 🚀 Using these skills
-
-- **Claude.ai / Claude Code**: drop the folder in `.claude/skills/`
-- **API**: attach via the skills mechanism / include in context
-- **Other agents**: the format ports trivially — it's just markdown + files
+++层 ++ 工具 ++
+|---|---|
+11Labs、OpenAI TTS、巴克
+音乐 苏诺 乌迪奥 稳定音频
+SFX 稳定音频 11Labs SFX QQ
+翻译:Whiper, AssemblyAI, Deepgram |
+* 掌握 LANDR、臭氧AI*
+河边AI QQ
 
 ---
 ## 贡献
