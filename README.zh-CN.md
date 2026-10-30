@@ -1,50 +1,71 @@
-# Ai Audio Tools
+# Claude Skills
 
 [English](README.md) | [Français](README.fr.md) | [Español](README.es.md) | **中文** | [日本語](README.ja.md) | [Русский](README.ru.md)
 
-AI 音频与音乐工具
+Claude 技能集 — SKILL.md 文件
 
-# # # 语音 & TTS #
-* * * 工具 * * 注 * *
+□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□
+
+**Skills是带有`SKILL.md`文件**的文件夹,教AI代理如何完成特定任务——可装入上下文,而不是代码. Anthropic格式:一个YAML前置物质(`name`,`description`)加上指令,脚本,以及代理商按要求读取的资源.
+
+这部Repo是一款整理的现成技能集+自写指南.
+
+□ 技能类别
+
+* 文件技能
+技术 它会做什么?
 |---|---|
-[ElevenLabs] (https://elevenlabs.io/) | | 参考文献——TTS,克隆,编剧  腾讯网.
-[OpenAI TTS] (https://platform.openai.com/docs) [https://platform.openai.com/docs] 固态API声音 |
-[XTTS / Coqui](https://github.com/coqui-ai/TTS) OSS克隆引擎
-[暗 [https://github.com/suno-ai/bark] OSS 基因音频(speech+fx) |
+`docx` 创建/编辑 有跟踪更改的文字文档 QQ
+`pdf` 提取、拆分、合并、填充 PDF 表格
+`pptx` 从大纲中创建幻灯片甲板
+`xlsx` 带有公式、图表、 pivots 的电子表格
 
-□ □ □ 发言□ 文本
-* * * 工具 * * 注 * *
+=============================================================================================================================================================================
+技术 它会做什么?
 |---|---|
-[Whistory](https://github.com/openai/whisper) OSS标准——本地和免费 QQ.
-[快-低音] (https://github.com/SYSTRAN/faster-whisper) | Ctranslate2 速度|.
-[whisper.cpp] (https://github.com/ggerganov/whisper.cpp) 任何事物的Whisper
+QQ `webapp-testing` 驱动浏览器, 验证UI 状态 QQ
+`mcp-builder` 脚手架新MCP服务器
+=====================================================================================================================================================================================
+`git-commit-helper` 常规承诺、公关说明
 
-□ □ 音乐
-* * * 工具 * * 注 * *
+创造能力
+技术 它会做什么?
 |---|---|
-[Suno](https://suno.com/) | | | | | | | | | | | | | | | | | | | | | |
-[Udio](https://udio.com/) 竞争级别替代方法
-[稳定音频](https://stability.ai/) 稳定音频模式 QQ
-[MusicGen](https://github.com/facebookresearch/audiocraft)[永久失效連結] 梅塔公开音乐模式 腾讯网.
-[Rifmusion](https://github.com/riffusion/riffusion) | Spectrogram-diflusation起源 |.
+`canvas-design` 视觉设计规格 → 资产
+`video-script` 故事板 + 脚本格式化
+`brand-voice` 执行关于草稿的样式指南
 
-# # # # 语音转换 & FX
-* * * 工具 * * 注 * *
-|---|---|
-[RVC](https://github.com/RVC-Project/Retrieval-based-Voice-Conversion) 大众语音转换 腾讯网.
-[Adobe Podcast] (https://podcast.adobe.com/enhance) – 单击清话 – |
-[Demucs](https://github.com/facebookresearch/demucs) |  Ste  Ste  Ste  Ste  Ste  Ste  Ste  Ste  Ste  Ste  Ste | | | | | | | | | | | | | | | | | | | | | | | | |
+□ 解剖一个SKILL.MD
 
-□ 生产堆栈
+```markdown
+---
+name: pdf-form-filler
+description: Fill PDF form fields. Use when the user provides a PDF with empty form fields.
+---
 
-++层 ++ 工具 ++
-|---|---|
-11Labs、OpenAI TTS、巴克
-音乐 苏诺 乌迪奥 稳定音频
-SFX 稳定音频 11Labs SFX QQ
-翻译:Whiper, AssemblyAI, Deepgram |
-* 掌握 LANDR、臭氧AI*
-河边AI QQ
+# PDF Form Filler
+
+## Instructions
+1. Run `scripts/extract_fields.py form.pdf` to list fields
+2. Ask the user for values of any ambiguous field
+3. Fill with `scripts/fill_fields.py`
+
+## Resources
+- `scripts/` — helper scripts (deterministic, no LLM needed)
+- `reference/field-types.md` — PDF field type reference
+```
+
+** 拇指规则:**
+- 描述=触发——它决定代理人何时装载技能
+- 定型工作用**语录**,判决工作用说明书。
+- 保留 SKILL.md < 500行;将参考资料分割成文件
+- 技能构成:一种技能可以参考另一种技能
+
+□ 利用这些技能
+
+- ** Claude.ai / Claude代码**: 将文件夹放入 `.claude/skills/`
+- ** API**:通过技能机制附加/包括上下文
+- **其他代理**:格式端口微乎其微——只是标记下+文件
 
 ---
 ## 贡献
