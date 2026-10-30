@@ -1,50 +1,71 @@
-# Ai Audio Tools
+# Claude Skills
 
 [English](README.md) | [Français](README.fr.md) | [Español](README.es.md) | [中文](README.zh-CN.md) | [日本語](README.ja.md) | **Русский**
 
-ИИ-инструменты аудио и музыки
+Скиллы для Claude — SKILL.md
 
-##  ️ Голос и TTS
-| Инструмент | Примечание
+###Что такое агентские навыки?
+
+** Навыки - это папки с файлом `SKILL.md`**, которые учат агента ИИ выполнять определенную задачу - загружаемый контекст, а не код. Формат Anthropic: передняя часть YAML (`name`, `description`) плюс инструкции, сценарии и ресурсы, которые агент читает по требованию.
+
+Это репо - кураторская коллекция готовых к использованию навыков + руководство по написанию собственного.
+
+##  categories Навыки
+
+###  skills Навыки работы с документами
+Навыки, навыки Что он делает
 |---|---|
-[ElevenLabs] (https://elevenlabs.io/) Ссылка — ТТС, клонирование, дублирование |
-[OpenAI TTS] (https://platform.openai.com/docs) | Твердые голоса API
-[XTTS / Coqui] (https://github.com/coqui-ai/TTS) | Двигатель клонирования OSS
-| [Bark](https://github.com/suno-ai/bark) | OSS генеративное аудио (речь + fx) |
+`docx` Создание/редактирование Документы Word с отслеживаемыми изменениями
+| `pdf` | Экстракт, разделение, слияние, заполнение форм PDF |
+| `pptx` | Построить слайд-палубы из контуров |
+| `xlsx` | Электронные таблицы с формулами, диаграммами, поворотами |
 
-##   Речь→Текст
-| Инструмент | Примечание
+###  ️ Навыки
+Навыки, навыки Что он делает
 |---|---|
-| [Шепот] (https://github.com/openai/whisper) | Стандарт OSS — локальный и бесплатный |
-[быстрый шепот] (https://github.com/SYSTRAN/faster-whisper) | CTranslate2 speedup |
-[whisper.cpp] [https://github.com/ggerganov/whisper.cpp] [Whisper on Anything] [Whisper on Anything]
+| `webapp-testing` | Управлять браузером, проверять состояния пользовательского интерфейса |
+| `mcp-builder` | Новые MCP-серверы
+| `skill-creator` | Мета-навык: напишите новые навыки |
+| `git-commit-helper` | Обычные обязательства, описания PR |
 
-## Музыка
-| Инструмент | Примечание
+### Творческие способности
+Навыки, навыки Что он делает
 |---|---|
-| [Suno](https://suno.com/) | Полные песни с вокалом |
-| [Udio](https://udio.com/) | Альтернатива конкурентного класса |
-[Стабильное аудио] (https://stability.ai/) | Аудиомодель Стабильности
-[MusicGen] (https://github.com/facebookresearch/audiocraft) | Открытая музыкальная модель Meta
-[Riffusion] (https://github.com/riffusion/riffusion) | Происхождение спектрограмм-диффузии
+| `canvas-design` | Спецификации визуального дизайна → активы |
+| `video-script` | Раскадровка + форматирование сценариев |
+| `brand-voice` | Составьте руководство по стилю на черновиках |
 
-##   Голосовое преобразование и FX
-| Инструмент | Примечание
-|---|---|
-[RVC] (https://github.com/RVC-Project/Retrieval-based-Voice-Conversion) | Популярное преобразование голоса
-[Adobe Podcast] (https://podcast.adobe.com/enhance) | Очистка речи одним щелчком мыши
-[Demucs] (https://github.com/facebookresearch/demucs) | Разделение стеблей
+Анатомия SKILL.md
 
-###Производственный стек
+```markdown
+---
+name: pdf-form-filler
+description: Fill PDF form fields. Use when the user provides a PDF with empty form fields.
+---
 
-Слой, инструменты.
-|---|---|
-ElevenLabs, OpenAI TTS, Bark
-Музыка, Udio, Stable Audio
-Стабильное аудио, ElevenLabs SFX
-| Транскрипция | Шепот, AssemblyAI, Deepgram |
-Оригинальное название: LANDR, Ozone AI
-| Podcast | Descript (редактировано по тексту), Riverside AI |
+# PDF Form Filler
+
+## Instructions
+1. Run `scripts/extract_fields.py form.pdf` to list fields
+2. Ask the user for values of any ambiguous field
+3. Fill with `scripts/fill_fields.py`
+
+## Resources
+- `scripts/` — helper scripts (deterministic, no LLM needed)
+- `reference/field-types.md` — PDF field type reference
+```
+
+** Правила большого пальца: **
+Описание = триггер - решает, когда агент загружает навык
+Детерминистская работа идет в **скриптах **, работа суждения остается в инструкциях
+Сохраните SKILL.md < 500 строк; разделите справочный материал на файлы
+Навыки составления: один навык может ссылаться на другой
+
+###Использование этих навыков
+
+**Claude.ai/Claude Code**: опустить папку в `.claude/skills/`
+**API**: подключать через механизм навыков / включать в контекст
+**Другие агенты**: порты формата тривиально — это просто разметка + файлы
 
 ---
 ## Участие
