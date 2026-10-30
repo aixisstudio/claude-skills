@@ -1,50 +1,71 @@
-# Ai Audio Tools
+# Claude Skills
 
 [English](README.md) | [Français](README.fr.md) | **Español** | [中文](README.zh-CN.md) | [日本語](README.ja.md) | [Русский](README.ru.md)
 
-Herramientas de audio y música con IA
+Skills de agente para Claude
 
-Voz de voz
-← Herramienta Silenciosa
+¿Cuáles son las habilidades del agente?
+
+**Las habilidades son carpetas con un archivo `SKILL.md`** que enseñan a un agente de AI cómo hacer una tarea específica — contexto cargable, no código. Formato de Antrópico: una materia frontal YAML (`name`, `description`) más instrucciones, scripts y recursos que el agente lee bajo demanda.
+
+Este repo es una colección curada de habilidades listas para usar + una guía para escribir su propio.
+
+## 📚 Categorías de la habilidad
+
+#### 📄 Document skills
+Esquía permanente Lo que hace
 |---|---|
-[ElevenLabs] (https://elevenlabs.io/) La referencia — TTS, clonación, doblado
-Silencio [OpenAI TTS] (https://platform.openai.com/docs)
-[XTTS / Coqui] (https://github.com/coqui-ai/TTS)
-[Bark] (https://github.com/suno-ai/bark) Silencio OSS audio generativo (speech+fx)
+Silencio `docx` Silencio Crear / editar Documentos de palabras con cambios rastreados
+← `pdf` Silencio Extract, split, merge, fill PDF forms ←
+Silencio `pptx` Silencio Construir cubiertas de diapositivas de contornos Silencio
+← `xlsx` Silencioso hojas de cálculo con fórmulas, diagramas, pivotes
 
-## 📝 Speech→Text
-← Herramienta Silenciosa
+### ## 🛠ف Destrezas Dev
+Esquía permanente Lo que hace
 |---|---|
-Silencio [Whisper] (https://github.com/openai/whisper)
-(https://github.com/SYSTRAN/faster-whisper)
-[whisper.cpp] (https://github.com/ggerganov/whisper.cpp)
+← `webapp-testing` Silencio Conducir un navegador, verificar los estados de la UI
+← `mcp-builder` ← Nuevos servidores MCP
+Silencio `skill-creator` Silencio Meta-skill: escribir nuevas habilidades ←
+Silencio `git-commit-helper` Silenciocomunicación, descripciones de las relaciones sexuales
 
-Música
-← Herramienta Silenciosa
+#### ## ## ### ### #### ## ### ### ######################################################################################################################################################################################################################################
+Esquía permanente Lo que hace
 |---|---|
-Silencio [Suno] (https://suno.com/) Silencio Canciones completas con vocales
-Silencio [Udio] (https://udio.com/)
-Silencio [Stable Audio] (https://stability.ai/)
-Silencio [MusicGen] (https://github.com/facebookresearch/audiocraft)
-[Riffusion] (https://github.com/riffusion/riffusion)
+← `canvas-design` ← Diseño visual specs → assets ←
+TEN `video-script` TENIDO Storyboard + script formatear
+Silencio `brand-voice` Silencio Hacer cumplir una guía de estilo sobre los proyectos
 
-## 🔊 Conversión de voz &gt; FX
-← Herramienta Silenciosa
-|---|---|
-Silencio [RVC] (https://github.com/RVC-Project/Retrieval-based-Voice-Conversion)
-Silencio [Adobe Podcast] (https://podcast.adobe.com/enhance)
-[Demucs] (https://github.com/facebookresearch/demucs)
+## 🧪 Anatomía de un SKILL.md
 
-## 🎹 Apilado de producción
+```markdown
+---
+name: pdf-form-filler
+description: Fill PDF form fields. Use when the user provides a PDF with empty form fields.
+---
 
-← Layer Silencioso Herramientas Silencio
-|---|---|
-← Voz Silencioso ElevenLabs, OpenAI TTS, Bark
-← Música en Suno, Udio, Stable Audio
-SFX ← Stable Audio, ElevenLabs SFX
-Silencioso transcripción Silencioso, AssemblyAI, Deepgram
-TENIENDO TERRITORIO EN LA LANDR, Ozone AI
-Podcast Silencioso Descripto (editado por texto), Riverside AI
+# PDF Form Filler
+
+## Instructions
+1. Run `scripts/extract_fields.py form.pdf` to list fields
+2. Ask the user for values of any ambiguous field
+3. Fill with `scripts/fill_fields.py`
+
+## Resources
+- `scripts/` — helper scripts (deterministic, no LLM needed)
+- `reference/field-types.md` — PDF field type reference
+```
+
+**Ruinas de pulgar:**
+- Descripción = disparador - decide cuando el agente carga la habilidad
+- El trabajo determinista va en **scriptos**, el trabajo de juicio permanece en instrucciones
+- Mantener SKILL.md 0 500 líneas; dividir material de referencia en archivos
+- Composicion de habilidades: una habilidad puede hacer referencia a otra
+
+## 🚀 Usando estas habilidades
+
+- **Claude.ai / Código Claude**: suelte la carpeta en `.claude/skills/`
+**API**: adjuntar a través del mecanismo de habilidades / incluir en el contexto
+- **Otros agentes**: los puertos de formato trivialmente - es sólo marcado + archivos
 
 ---
 ## Contribuir
