@@ -68,7 +68,7 @@ description: Fill PDF form fields. Use when the user provides a PDF with empty f
 - **Other agents**: the format ports trivially — it's just markdown + files
 
 ---
-Maintained by [aixisstudio](https://github.com/aixisstudio) — author of [Snitch](https://github.com/aixisstudio/Snitch), the open-source application firewall.
+Maintained by [aixisstudio](https://github.com/aixisstudio) — author of [Wiretap](https://github.com/aixisstudio/Wiretap), the open-source application firewall.
 
 ## License
 
